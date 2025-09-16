@@ -1,3 +1,5 @@
+![image alt](https://github.com/Abhiram-ks/First-Economy/blob/3dd65e69844eefc3835eab891e9f1e7bc8811f5f/fe_banner.png)
+
 # First Economy
 
 # Why ? What?
@@ -22,3 +24,4 @@
 
 # Tech Stack
 Flutter & Dart | Bloc/Cubit | Clean Architecture & SOLID principles | (HTTP) REST API communication | Custom UI Components for enhanced design
+
