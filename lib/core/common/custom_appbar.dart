@@ -5,17 +5,17 @@ import 'package:firsteconomy/features/presentation/bloc/navigation_cubit/navigat
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? userName;
+  final bool showBack;
 
-  const CustomAppBar({super.key, this.userName});
+  const CustomAppBar({super.key, this.userName, this.showBack = false});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppPalette.lighBlackColor,
+      automaticallyImplyLeading: false,
       elevation: 4,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
@@ -27,7 +27,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  context.read<NavigationCubit>().selectItem(NavItems.profile);
+                  if (showBack) {
+                    Navigator.of(context).maybePop();
+                  } else {
+                    context.read<NavigationCubit>().selectItem(
+                      NavItems.profile,
+                    );
+                  }
                 },
                 child: Container(
                   padding: const EdgeInsets.all(2),
@@ -43,7 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
 
-               ConstantWidgets.width20(context),
+              ConstantWidgets.width20(context),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment:
@@ -84,7 +90,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          IconButton(onPressed: () {}, icon: Icon(LucideIcons.menu, size: 30)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.menu_rounded, size: 30)),
         ],
       ),
 

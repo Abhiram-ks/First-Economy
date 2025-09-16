@@ -4,7 +4,6 @@ import 'package:firsteconomy/features/domain/entity/banner_entity.dart';
 import 'package:firsteconomy/features/presentation/bloc/image_slider_cubit/image_slider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ImageSlider extends StatelessWidget {
@@ -14,8 +13,10 @@ class ImageSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sortedBanners = [...banners]..sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+
     return BlocProvider(
-      create: (_) => ImageSliderCubit(imageList: banners.length),
+      create: (_) => ImageSliderCubit(imageList: sortedBanners.length),
       child: BlocBuilder<ImageSliderCubit, int>(
         builder: (context, state) {
           final cubit = context.read<ImageSliderCubit>();
@@ -25,14 +26,14 @@ class ImageSlider extends StatelessWidget {
             children: [
               ConstantWidgets.hight20(context),
               SizedBox(
-               height: MediaQuery.of(context).size.height * 0.18,
+                height: MediaQuery.of(context).size.height * 0.18,
                 width: double.infinity,
                 child: PageView.builder(
                   controller: cubit.pageController,
                   onPageChanged: cubit.updatePage,
-                  itemCount: banners.length,
+                  itemCount: sortedBanners.length,
                   itemBuilder: (context, index) {
-                    final banner = banners[index];
+                    final banner = sortedBanners[index];
                     return Container(
                       margin: const EdgeInsets.only(right: 10),
                       child: ClipRRect(
@@ -45,12 +46,10 @@ class ImageSlider extends StatelessWidget {
                             if (loadingProgress == null) return child;
                             return Center(
                               child: CircularProgressIndicator(
-                                value:
-                                    loadingProgress.expectedTotalBytes != null
-                                        ? loadingProgress
-                                                .cumulativeBytesLoaded /
-                                            loadingProgress.expectedTotalBytes!
-                                        : null,
+                                value: loadingProgress.expectedTotalBytes != null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
                                 color: AppPalette.blueColor,
                               ),
                             );
@@ -66,7 +65,7 @@ class ImageSlider extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
-                                      LucideIcons.image,
+                                      Icons.image_search,
                                       size: 40,
                                       color: AppPalette.greyColor,
                                     ),
@@ -99,7 +98,7 @@ class ImageSlider extends StatelessWidget {
               ConstantWidgets.hight20(context),
               SmoothPageIndicator(
                 controller: cubit.pageController,
-                count: banners.length,
+                count: sortedBanners.length,
                 effect: const ExpandingDotsEffect(
                   dotHeight: 6,
                   dotWidth: 16,

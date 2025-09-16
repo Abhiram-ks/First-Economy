@@ -15,4 +15,22 @@ class AppImages {
   static const String personalloan = 'assets/personalloan_banner.png';
   static const String quizgame = 'assets/quizgame_banner.png';
   static const String rewards = 'assets/reward_banner.png';
+  static const String scuterBike = 'assets/bikescuter_banner.png';
+  static const String bikeApply = 'assets/bike_apply.png';
+  static const String createApply = 'assets/create_apply.png';
+  static const String scuterApply = 'assets/scuter_apply.png';
+
+  static const String rocketCard = 'assets/rocket_card.png';
+  static const String nitroAngleCard = 'assets/nitro_card.png';
+  static const String giftCard = 'assets/gift_card.png';
+
+
+  //!Icons
+  static const String documentICon = 'assets/document_icon.png';
+  static const String info = 'assets/info_icon.png';
+  static const String loaninfo = 'assets/loaninfo_icon.png';
+  static const String logout = 'assets/logout_icon.png';
+  static const String profileIcon = 'assets/profile_icon.png';
+  static const String register = 'assets/register_icon.png';
+  static const String repayemnt = 'assets/repayment_icon.png';
 }

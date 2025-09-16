@@ -3,10 +3,9 @@ import 'package:firsteconomy/core/themes/app_colors.dart';
 import 'package:firsteconomy/features/presentation/bloc/navigation_cubit/navigation_cubit.dart';
 import 'package:firsteconomy/features/presentation/screens/home_screen.dart';
 import 'package:firsteconomy/features/presentation/screens/profile_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-
 const double bottomNavBarHeight = 77.0;
 
 class BottomNavigationControllers extends StatelessWidget {
@@ -88,10 +87,10 @@ class BottomNavigationControllers extends StatelessWidget {
                       ),
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(LucideIcons.search),
+                      icon: Icon(CupertinoIcons.search),
                       label: 'Explore',
                       activeIcon: Icon(
-                        LucideIcons.search,
+                        CupertinoIcons.search,
                         color: AppPalette.whiteColor,
                       ),
                     ),
