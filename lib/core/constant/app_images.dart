@@ -1,5 +1,5 @@
 class AppImages {
-  static const String appLogo = 'assets/crisant_logo.png';
-  static const String animation = 'assets/ellipes_animation.json';
-  static const String googleLogo = 'assets/google_logo.png';
+  static const String capital = 'assets/capital_download.png';
+  static const String hand = 'assets/hand_download.png';
+  static const String profile = 'assets/profile_download.png';
 }
