@@ -1,4 +1,8 @@
+import 'package:firsteconomy/core/constant/app_images.dart';
+import 'package:firsteconomy/core/constant/constant.dart';
+import 'package:firsteconomy/core/themes/app_colors.dart' show AppPalette;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
   const ProfileHeaderWidget({super.key});
@@ -10,16 +14,15 @@ class ProfileHeaderWidget extends StatelessWidget {
         Stack(
           children: [
             Container(
-              width: 120,
-              height: 120,
+              padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(60),
+                shape: BoxShape.circle,
+                color: AppPalette.whiteColor,
               ),
-              child: const Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 60,
+              child: CircleAvatar(
+                radius: 60,
+                backgroundColor: AppPalette.blueColor,
+                backgroundImage: AssetImage(AppImages.profile),
               ),
             ),
             Positioned(
@@ -29,24 +32,25 @@ class ProfileHeaderWidget extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: Colors.grey[800],
+                  color: AppPalette.whiteColor,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(color: Colors.white, width: 2),
                 ),
-                child: const Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: 18,
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                    6,
+                  ), 
+                  child: Image.asset(AppImages.camara, fit: BoxFit.contain),
                 ),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 16),
-        const Text(
+        ConstantWidgets.hight20(context),
+         Text(
           'Ayush Khurana',
-          style: TextStyle(
-            color: Colors.white,
+          style: GoogleFonts.poppins(
+            color:AppPalette.blueColor,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -54,10 +58,7 @@ class ProfileHeaderWidget extends StatelessWidget {
         const SizedBox(height: 4),
         const Text(
           '+91 9940211***3',
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 16,
-          ),
+          style: TextStyle(fontSize: 16),
         ),
       ],
     );

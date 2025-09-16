@@ -1,3 +1,4 @@
+import 'package:firsteconomy/core/constant/app_images.dart';
 import 'package:firsteconomy/core/themes/app_colors.dart';
 import 'package:firsteconomy/features/presentation/bloc/navigation_cubit/navigation_cubit.dart';
 import 'package:firsteconomy/features/presentation/screens/home_screen.dart';
@@ -21,7 +22,7 @@ class BottomNavigationControllers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
+    return  Theme(
       data: Theme.of(context).copyWith(
         splashColor: AppPalette.whiteColor.withAlpha((0.3 * 225).round()),
         highlightColor: AppPalette.buttonColor.withAlpha((0.2 * 255).round()),
@@ -46,8 +47,10 @@ class BottomNavigationControllers extends StatelessWidget {
         bottomNavigationBar: BlocBuilder<NavigationCubit, NavItems>(
           builder: (context, state) {
             final currentIndex =
-                state == NavItems.profile ? 0 : NavItems.values.indexOf(state);
-
+                state == NavItems.profile
+                    ? 0
+                    : NavItems.values.indexOf(state);
+    
             return SizedBox(
               height: bottomNavBarHeight,
               child: ClipRRect(
@@ -70,13 +73,18 @@ class BottomNavigationControllers extends StatelessWidget {
                       NavItems.values[index],
                     );
                   },
-                  items: const [
+                  items: [
                     BottomNavigationBarItem(
-                      icon: Icon(LucideIcons.home),
+                      icon: Image.asset(
+                        AppImages.home,
+                        width: 24,
+                        height: 24,
+                      ),
                       label: 'Home',
-                      activeIcon: Icon(
-                        LucideIcons.home,
-                        color: AppPalette.whiteColor,
+                      activeIcon: Image.asset(
+                        AppImages.home,
+                        width: 24,
+                        height: 24,
                       ),
                     ),
                     BottomNavigationBarItem(
@@ -88,19 +96,29 @@ class BottomNavigationControllers extends StatelessWidget {
                       ),
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(LucideIcons.creditCard),
+                      icon: Image.asset(
+                        AppImages.nitrocard,
+                        width: 24,
+                        height: 24,
+                      ),
                       label: 'Nitro Card',
-                      activeIcon: Icon(
-                        LucideIcons.creditCard,
-                        color: AppPalette.whiteColor,
+                      activeIcon: Image.asset(
+                        AppImages.nitrocard,
+                        width: 24,
+                        height: 24,
                       ),
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(LucideIcons.award),
+                      icon: Image.asset(
+                        AppImages.rewards,
+                        width: 24,
+                        height: 24,
+                      ),
                       label: 'Rewards',
-                      activeIcon: Icon(
-                        LucideIcons.award,
-                        color: AppPalette.whiteColor,
+                      activeIcon: Image.asset(
+                        AppImages.rewards,
+                        width: 24,
+                        height: 24,
                       ),
                     ),
                   ],

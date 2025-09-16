@@ -1,4 +1,8 @@
+import 'package:firsteconomy/core/constant/app_images.dart';
+import 'package:firsteconomy/core/constant/constant.dart';
+import 'package:firsteconomy/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InviteFriendsWidget extends StatelessWidget {
   const InviteFriendsWidget({super.key});
@@ -8,7 +12,7 @@ class InviteFriendsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey[900],
+        color: const Color.fromARGB(255, 21, 21, 21),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -17,49 +21,55 @@ class InviteFriendsWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Invite your friends',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                  style: GoogleFonts.poppins(
+                    color: AppPalette.blueColor,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 4),
-                const Text(
-                  'Get upto 1000 coins when you friends sign up for CreditWise Digital',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                  ),
+                ConstantWidgets.hight10(context),
+                Text(
+                  'Get upto 1000 coins when your friends sign up for CreditWise Digital',
+                  style: GoogleFonts.poppins(fontSize: 11),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 12),
+
+                ConstantWidgets.hight10(context),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: AppPalette.blueColor,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 4,
+                    ),
+                    minimumSize: const Size(0, 36),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Send Invite',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 16),
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: const Icon(
-              Icons.people,
-              color: Colors.white,
-              size: 30,
+          ConstantWidgets.width20(context),
+          SizedBox(
+            width: 70,
+            height: 70,
+            child: Image.asset(
+              AppImages.hand, 
+              fit: BoxFit.contain, 
             ),
           ),
         ],

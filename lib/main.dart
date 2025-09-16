@@ -1,4 +1,8 @@
 import 'package:firsteconomy/core/themes/app_themes.dart';
+import 'package:firsteconomy/features/data/datasource/banner_remote_datasource.dart';
+import 'package:firsteconomy/features/data/repo/banner_repo_impl.dart';
+import 'package:firsteconomy/features/domain/usecase/banner_usecase.dart';
+import 'package:firsteconomy/features/presentation/bloc/bloc/banner_bloc.dart';
 import 'package:firsteconomy/features/presentation/bloc/emi_bloc/emi_bloc.dart';
 import 'package:firsteconomy/features/presentation/bloc/navigation_cubit/navigation_cubit.dart';
 import 'package:firsteconomy/features/presentation/screens/bottom_navigation.dart';
@@ -21,6 +25,14 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => NavigationCubit()),
         BlocProvider(create: (context) => EmiBloc()),
+        BlocProvider(      create:
+          (context) => BannerBloc(
+            getBannersUseCase: GetBannersUseCase(
+              repository: BannerRepositoryImpl(
+                remoteDatasource: BannerRemoteDatasource(),
+              ),
+            ),
+          )..add(FetchBannerEvent()))
       ],
       child: MaterialApp(
         title: 'Loan App',

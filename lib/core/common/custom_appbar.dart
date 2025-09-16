@@ -1,10 +1,11 @@
 import 'package:firsteconomy/core/constant/app_images.dart';
+import 'package:firsteconomy/core/constant/constant.dart';
 import 'package:firsteconomy/core/themes/app_colors.dart';
 import 'package:firsteconomy/features/presentation/bloc/navigation_cubit/navigation_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? userName;
@@ -28,13 +29,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onTap: () {
                   context.read<NavigationCubit>().selectItem(NavItems.profile);
                 },
-                child: CircleAvatar(
-                  radius: 20,
-                  backgroundColor: AppPalette.blueColor,
-                  backgroundImage: AssetImage(AppImages.profile),
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppPalette.whiteColor,
+                  ),
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: AppPalette.blueColor,
+                    backgroundImage: AssetImage(AppImages.profile),
+                  ),
                 ),
               ),
-              const SizedBox(width: 12),
+
+               ConstantWidgets.width20(context),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment:
@@ -75,11 +84,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-
-          const Icon(
-            CupertinoIcons.line_horizontal_3,
-            size: 30,
-          ),
+          IconButton(onPressed: () {}, icon: Icon(LucideIcons.menu, size: 30)),
         ],
       ),
 
